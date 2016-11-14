@@ -1967,7 +1967,8 @@ ruleTester.run("indent", rule, {
             "    (z === 3 || z === 4));\n" +
             "}",
             options: [2]
-        }, {
+        },
+        {
             code:
             "foo(\n" +
             "  bar,\n" +
@@ -1975,7 +1976,8 @@ ruleTester.run("indent", rule, {
             "  qux\n" +
             ");",
             options: [2, {CallExpression: {arguments: 1}}]
-        }, {
+        },
+        {
             code:
             "foo(\n" +
             "\tbar,\n" +
@@ -1983,13 +1985,15 @@ ruleTester.run("indent", rule, {
             "\tqux\n" +
             ");",
             options: ["tab", {CallExpression: {arguments: 1}}]
-        }, {
+        },
+        {
             code:
             "foo(bar,\n" +
             "        baz,\n" +
             "        qux);",
             options: [4, {CallExpression: {arguments: 2}}]
-        }, {
+        },
+        {
             code:
             "foo(\n" +
             "bar,\n" +
@@ -1997,26 +2001,30 @@ ruleTester.run("indent", rule, {
             "qux\n" +
             ");",
             options: [2, {CallExpression: {arguments: 0}}]
-        }, {
+        },
+        {
             code:
             "foo(bar,\n" +
             "    baz,\n" +
             "    qux\n" +
             ");",
             options: [2, {CallExpression: {arguments: "first"}}]
-        }, {
+        },
+        {
             code:
             "foo(bar, baz,\n" +
             "    qux, barbaz,\n" +
             "    barqux, bazqux);",
             options: [2, {CallExpression: {arguments: "first"}}]
-        }, {
+        },
+        {
             code:
             "foo(\n" +
             "                        bar, baz,\n" +
             "                        qux);",
             options: [2, {CallExpression: {arguments: "first"}}]
-        }, {
+        },
+        {
             code:
             "foo(bar,\n" +
             "        1 + 2,\n" +
@@ -2024,6 +2032,19 @@ ruleTester.run("indent", rule, {
             "        new Car('!')\n" +
             ");",
             options: [2, {CallExpression: {arguments: 4}}]
+        },
+        {
+            code:
+            "foo(\n" +
+            "    (bar)\n" +
+            ");",
+        },
+        {
+            code:
+            "foo(\n" +
+            "    (bar)\n" +
+            ");",
+            options: [4, {CallExpression: {arguments: 1}}]
         },
 
         // https://github.com/eslint/eslint/issues/7484
@@ -4010,6 +4031,18 @@ ruleTester.run("indent", rule, {
             ");",
             options: [2, {CallExpression: {arguments: 3}}],
             errors: expectedErrors([[2, 6, 2, "Numeric"], [3, 6, 14, "Punctuator"], [4, 6, 8, "Keyword"]])
+        },
+        {
+            code:
+            "foo(\n" +
+            "(bar)\n" +
+            ");",
+            output:
+            "foo(\n" +
+            "    (bar)\n" +
+            ");",
+            options: [4, {CallExpression: {arguments: 1}}],
+            errors: expectedErrors([2, 4, 0, "Punctuator"])
         },
         {
             code:
