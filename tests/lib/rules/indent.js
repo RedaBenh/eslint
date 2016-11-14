@@ -682,24 +682,24 @@ ruleTester.run("indent", rule, {
             options: [2]
         },
 
-        // {
-        //     code:
-        //     "[a, b, \n" +
-        //     "    c].forEach((index) => {\n" +
-        //     "        index;\n" +
-        //     "    });\n",
-        //     options: [4],
-        //     parserOptions: { ecmaVersion: 6 }
-        // },
-        // {
-        //     code:
-        //     "[a, b, \n" +
-        //     "    c].forEach(function(index){\n" +
-        //     "        return index;\n" +
-        //     "    });\n",
-        //     options: [4],
-        //     parserOptions: { ecmaVersion: 6 }
-        // },
+        {
+            code:
+            "[a, boop, \n" +
+            "    c].forEach((index) => {\n" +
+            "        index;\n" +
+            "    });\n",
+            options: [4],
+            parserOptions: { ecmaVersion: 6 }
+        },
+        {
+            code:
+            "[a, b, \n" +
+            "    c].forEach(function(index){\n" +
+            "        return index;\n" +
+            "    });\n",
+            options: [4],
+            parserOptions: { ecmaVersion: 6 }
+        },
         {
             code:
             "[a, b, c].forEach((index) => {\n" +
@@ -2716,44 +2716,44 @@ ruleTester.run("indent", rule, {
                 [3, 4, 0, "Identifier"]
             ])
         },
-        // {
-        //     code:
-        //     "[a, b, \n" +
-        //     "c].forEach((index) => {\n" +
-        //     "  index;\n" +
-        //     "});\n",
-        //     output:
-        //     "[a, b, \n" +
-        //     "    c].forEach((index) => {\n" +
-        //     "        index;\n" +
-        //     "    });\n",
-        //     options: [4],
-        //     parserOptions: { ecmaVersion: 6 },
-        //     errors: expectedErrors([
-        //         [2, 4, 0, "Identifier"],
-        //         [3, 8, 2, "Identifier"],
-        //         [4, 4, 0, "Punctuator"]
-        //     ])
-        // },
-        // {
-        //     code:
-        //     "[a, b, \n" +
-        //     "c].forEach(function(index){\n" +
-        //     "  return index;\n" +
-        //     "});\n",
-        //     output:
-        //     "[a, b, \n" +
-        //     "    c].forEach(function(index){\n" +
-        //     "        return index;\n" +
-        //     "    });\n",
-        //     options: [4],
-        //     parserOptions: { ecmaVersion: 6 },
-        //     errors: expectedErrors([
-        //         [2, 4, 0, "Identifier"],
-        //         [3, 8, 2, "Keyword"],
-        //         [4, 4, 0, "Punctuator"]
-        //     ])
-        // },
+        {
+            code:
+            "[a, b, \n" +
+            "c].forEach((index) => {\n" +
+            "  index;\n" +
+            "});\n",
+            output:
+            "[a, b, \n" +
+            "    c].forEach((index) => {\n" +
+            "        index;\n" +
+            "    });\n",
+            options: [4],
+            parserOptions: { ecmaVersion: 6 },
+            errors: expectedErrors([
+                [2, 4, 0, "Identifier"],
+                [3, 8, 2, "Identifier"],
+                [4, 4, 0, "Punctuator"]
+            ])
+        },
+        {
+            code:
+            "[a, b, \n" +
+            "c].forEach(function(index){\n" +
+            "  return index;\n" +
+            "});\n",
+            output:
+            "[a, b, \n" +
+            "    c].forEach(function(index){\n" +
+            "        return index;\n" +
+            "    });\n",
+            options: [4],
+            parserOptions: { ecmaVersion: 6 },
+            errors: expectedErrors([
+                [2, 4, 0, "Identifier"],
+                [3, 8, 2, "Keyword"],
+                [4, 4, 0, "Punctuator"]
+            ])
+        },
         {
             code:
             "[a, b, c].forEach(function(index){\n" +
