@@ -1709,6 +1709,15 @@ ruleTester.run("indent", rule, {
             options: [2]
         },
         {
+            code:
+            "[\n" +
+            "    foo ?\n" +
+            "        bar :\n" +
+            "        baz,\n" +
+            "    qux\n" +
+            "];"
+        },
+        {
 
             // Checking comments:
             // https://github.com/eslint/eslint/issues/6571
@@ -3977,6 +3986,23 @@ ruleTester.run("indent", rule, {
             "  : baz",
             options: [2],
             errors: expectedErrors([[2, 2, 0, "Punctuator"], [3, 2, 4, "Punctuator"]])
+        },
+        {
+            code:
+            "[\n" +
+            "    foo ?\n" +
+            "        bar :\n" +
+            "        baz,\n" +
+            "        qux\n" +
+            "]",
+            output:
+            "[\n" +
+            "    foo ?\n" +
+            "        bar :\n" +
+            "        baz,\n" +
+            "    qux\n" +
+            "]",
+            errors: expectedErrors([5, 4, 8, "Identifier"])
         },
         {
 
