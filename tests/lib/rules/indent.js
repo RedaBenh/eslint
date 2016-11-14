@@ -227,8 +227,8 @@ ruleTester.run("indent", rule, {
             code:
             "it('should... some lengthy test description that is forced to be' +\n" +
             "  'wrapped into two lines since the line length limit is set', () => {\n" +
-            "    expect(true).toBe(true);\n" +
-            "  });\n",
+            "  expect(true).toBe(true);\n" +
+            "});\n",
             options: [2],
             parserOptions: { ecmaVersion: 6 }
         },
@@ -2304,10 +2304,9 @@ ruleTester.run("indent", rule, {
                 [392, 2, 4, "Identifier"],
                 [409, 2, 0, "Identifier"],
                 [410, 2, 4, "Identifier"],
-                [415, 6, 2, "Identifier"],
-                [416, 6, 0, "Identifier"],
-                [417, 6, 4, "Identifier"],
-                [418, 4, 0, "Punctuator"],
+                [416, 2, 0, "Identifier"],
+                [417, 2, 4, "Identifier"],
+                [418, 0, 4, "Punctuator"],
                 [422, 2, 4, "Identifier"],
                 [423, 2, 0, "Identifier"],
                 [427, 2, 6, "Identifier"],
@@ -2318,9 +2317,9 @@ ruleTester.run("indent", rule, {
                 [434, 0, 4, "Punctuator"],
                 [437, 2, 0, "Identifier"],
                 [438, 0, 4, "Punctuator"],
-                [442, 4, 2, "Identifier"],
-                [443, 4, 2, "Identifier"],
-                [444, 2, 0, "Punctuator"],
+                [442, 2, 4, "Identifier"],
+                [443, 2, 4, "Identifier"],
+                [444, 0, 2, "Punctuator"],
                 [451, 2, 0, "Identifier"],
                 [453, 2, 4, "Identifier"],
                 [499, 6, 8, "Punctuator"],
