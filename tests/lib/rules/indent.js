@@ -718,6 +718,15 @@ ruleTester.run("indent", rule, {
         },
         {
             code:
+            "(foo)\n" +
+            "    .bar([\n" +
+            "        baz\n" +
+            "    ]);",
+            options: [4, {MemberExpression: 1}],
+            parserOptions: { ecmaVersion: 6 }
+        },
+        {
+            code:
             "switch (x) {\n" +
             "    case \"foo\":\n" +
             "        a();\n" +
@@ -2776,6 +2785,21 @@ ruleTester.run("indent", rule, {
             errors: expectedErrors([
                 [2, 4, 2, "Keyword"]
             ])
+        },
+        {
+            code:
+            "(foo)\n" +
+            "    .bar([\n" +
+            "    baz\n" +
+            "]);",
+            output:
+            "(foo)\n" +
+            "    .bar([\n" +
+            "        baz\n" +
+            "    ]);",
+            options: [4, {MemberExpression: 1}],
+            parserOptions: { ecmaVersion: 6 },
+            errors: expectedErrors([[3, 8, 4, "Identifier"], [4, 4, 0, "Punctuator"]])
         },
         {
             code:
