@@ -203,8 +203,8 @@ ruleTester.run("indent", rule, {
             code:
             "require('http').request({hostname: 'localhost',\n" +
             "  port: 80}, function(res) {\n" +
-            "    res.end();\n" +
-            "  });\n",
+            "  res.end();\n" +
+            "});\n",
             options: [2]
         },
         {
@@ -2197,10 +2197,10 @@ ruleTester.run("indent", rule, {
             output:
             "require('http').request({hostname: 'localhost',\n" +
             "  port: 80}, function(res) {\n" +
-            "    res.end();\n" +
-            "  });\n",
+            "  res.end();\n" +
+            "});\n",
             options: [2],
-            errors: expectedErrors([[2, 2, 18, "Identifier"]])
+            errors: expectedErrors([[2, 2, 18, "Identifier"], [3, 2, 4, "Identifier"], [4, 0, 2, "Punctuator"]])
         },
         {
             code:
@@ -3801,7 +3801,7 @@ ruleTester.run("indent", rule, {
             ");",
             output:
             "foo.bar(\n" +
-            "      baz, function() {\n" +
+            "      baz, qux, function() {\n" +
             "            qux;\n" +
             "      }\n" +
             ");",
