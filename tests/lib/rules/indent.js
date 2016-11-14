@@ -1662,6 +1662,15 @@ ruleTester.run("indent", rule, {
         },
         {
             code:
+            "foo.bar(\n" +
+            "      baz, qux, function() {\n" +
+            "            qux;\n" +
+            "      }\n" +
+            ");",
+            options: [2, {FunctionExpression: {body: 3}}]
+        },
+        {
+            code:
             "function foo() {\n" +
             "  bar();\n" +
             "  \tbaz();\n" +
@@ -3782,6 +3791,22 @@ ruleTester.run("indent", rule, {
             "}",
             options: [2, {FunctionExpression: {parameters: 3}}],
             errors: expectedErrors([3, 8, 10, "Identifier"])
+        },
+        {
+            code:
+            "foo.bar(\n" +
+            "      baz, qux, function() {\n" +
+            "        qux;\n" +
+            "      }\n" +
+            ");",
+            output:
+            "foo.bar(\n" +
+            "      baz, function() {\n" +
+            "            qux;\n" +
+            "      }\n" +
+            ");",
+            options: [2, {FunctionExpression: {body: 3}}],
+            errors: expectedErrors([3, 12, 8, "Identifier"])
         },
         {
             code:
